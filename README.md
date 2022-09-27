@@ -19,3 +19,6 @@ make launch
 
 ### Results
 Table for all LiDARs simulation results
+
+
+## LiDAR Placement Evaluation in V2X Scenario
