@@ -13,8 +13,11 @@ LiDARSimLib/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/livox.cpp, line9: 
 LiDARSimLib/PythonAPI/lidar_lib_example/lidar_display.py, line30: modify depend on your own carla path
 
 2.rebuild carla
+
 make clean
+
 make PythonAPI
+
 make launch
 
 ### Results
