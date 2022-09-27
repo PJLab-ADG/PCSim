@@ -1,4 +1,4 @@
-# LiDARSimLib-and-Placement-Evaluation
+# LiDARSimLib and Placement Evaluation
 
 ## LiDAR Simulation Library
 
