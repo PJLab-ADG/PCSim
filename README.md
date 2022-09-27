@@ -34,6 +34,6 @@ make launch
 ### Results
 Table for all LiDARs simulation results
 
-![](pic/abc.png)
+![](pic/LiDARSimLib.png)
 
 ## LiDAR Placement Evaluation in V2X Scenario
