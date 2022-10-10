@@ -87,9 +87,15 @@ ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data
 
 +	LiDAR beam simulation
 
+![LiDAR_beam_simulation](pic/simulation_scan_points.png)
+
 +	Motion distortion simulation
 
+![Motion_distortion_simulation](pic/motionDistortion.png)
+
 +	Ghosting object effect simulation
+
+![Ghosting_object_effect_simulation](pic/ghostingEffect.png)
 
 ## LiDAR Placement Evaluation in V2X Scenario
 
