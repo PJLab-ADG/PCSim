@@ -48,7 +48,6 @@ make clean
 make PythonAPI
 
 make launch
-
 ```
 
 4. Create LiDAR
@@ -60,14 +59,12 @@ lidar_bp = world.get_blueprint_library().find('sensor.lidar.ray_cast') # choose 
 lidar_bp.set_attribute("lidar_type", "Surround") # set lidar_type as Surround, Solid_state, Risley_prism
 
 lidar_bp.set_attribute("name","pandar64") # set name as any one in LiDAR List
-
 ```
 
 5. Set LiDAR ghosting object effect
 
 ```
 lidar_bp.set_attribute("enable_ghost", "true") # enable ghosting object effect
-
 ```
 
 6. Motion distortion simulation
@@ -76,17 +73,14 @@ lidar_bp.set_attribute("enable_ghost", "true") # enable ghosting object effect
 import sys
 sys.path.append("/your/path/of/carla/LibCustomFunction") # append the LibCustomFunction
 from enable_motion_distortion import LidarMotonDistortion # import the LidarMotonDistortion module # import LidarMotonDistortion module
-
 ```
 
 ```
 lidar_motion_distort = LidarMotonDistortion("./horizon/", 10) # init LidarMotonDistortion with file_path and distortion delay_time. file_path is where the data you want to save. delay_time is the ratio of simulator frequency to lidar frequency.
-
 ```
 
 ```
 ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data, True)) # enable motion distortion
-
 ```
 
 ### Results
