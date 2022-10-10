@@ -87,7 +87,7 @@ ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data
 
 +	LiDAR beam simulation
 
-![LiDAR_beam_simulation](pic/simulation_scan_points.png)
+![LiDAR_beam_simulation](pic/lidarsim.png)
 
 +	Motion distortion simulation
 
