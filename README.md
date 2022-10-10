@@ -29,7 +29,7 @@
 
 ### Usage
 
-1. There are two paths should be modified:
+#### 1. There are two paths should be modified:
 
 ```
 LiDARSimLib/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/livox.cpp
@@ -38,9 +38,9 @@ LiDARSimLib/PythonAPI/lidar_lib_example/lidar_display.py
 line30: modify depend on your own carla path
 ```
 
-2. Use this file to overwrite the original carla directory
+#### 2. Use this file to overwrite the original carla directory
 
-3. Rebuild carla
+#### 3. Rebuild carla
 
 ```
 make clean
@@ -50,7 +50,7 @@ make PythonAPI
 make launch
 ```
 
-4. Create LiDAR
+#### 4. Create LiDAR
 
 
 ```
@@ -61,35 +61,40 @@ lidar_bp.set_attribute("lidar_type", "Surround") # set lidar_type as Surround, S
 lidar_bp.set_attribute("name","pandar64") # set name as any one in LiDAR List
 ```
 
-5. Set LiDAR ghosting object effect
+#### 5. Set LiDAR ghosting object effect
 
 ```
 lidar_bp.set_attribute("enable_ghost", "true") # enable ghosting object effect
 ```
 
-6. Motion distortion simulation
+#### 6. Motion distortion simulation
 
++ Import the LidarMotonDistortion module
 ```
 import sys
 sys.path.append("/your/path/of/carla/LibCustomFunction") # append the LibCustomFunction
-from enable_motion_distortion import LidarMotonDistortion # import the LidarMotonDistortion module # import LidarMotonDistortion module
-
-lidar_motion_distort = LidarMotonDistortion("./horizon/", 10) # init LidarMotonDistortion with file_path and distortion delay_time. file_path is where the data you want to save. delay_time is the ratio of simulator frequency to lidar frequency.
-
-ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data, True)) # enable motion distortion
+from enable_motion_distortion import LidarMotonDistortion
+```
++ Init LidarMotonDistortion with file_path and distortion delay_time
+```
+lidar_motion_distort = LidarMotonDistortion("./horizon/", 10) # file_path is where the data you want to save. delay_time is the ratio of simulator frequency to lidar frequency.
+```
++ Enable motion distortion
+```
+ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data, True))
 ```
 
 ### Results
 
-+	LiDAR beam simulation
+####	LiDAR beam simulation
 
 ![LiDAR_beam_simulation](pic/lidarsim.png)
 
-+	Motion distortion simulation
+####	Motion distortion simulation
 
 ![Motion_distortion_simulation](pic/motionDistortion.png)
 
-+	Ghosting object effect simulation
+####	Ghosting object effect simulation
 
 ![Ghosting_object_effect_simulation](pic/ghostingEffect.png)
 
