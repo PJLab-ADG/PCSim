@@ -39,3 +39,6 @@ FLidarDescription create_vlp32();
 
 //12. os1_64gen2
 FLidarDescription create_os1_64_gen2();
+
+//13. hdl32e
+FLidarDescription create_hdl32();
