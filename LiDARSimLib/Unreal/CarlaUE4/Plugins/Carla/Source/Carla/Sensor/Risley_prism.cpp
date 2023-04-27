@@ -75,7 +75,7 @@ FLidarDescription create_Risley_prism(const string& lidar_name)
 
 	
 	// livox.Decay = 0.25;
-	livox.livox_csv_info = Risley_prism_csv_reader(lidar_name); //read csv
+	livox.livox_csv_info = livox_csv_reader(lidar_name); //read csv
 	livox.LivoxSize = livox.livox_csv_info.size();
 	livox.LivoxCount = 0;
 	
