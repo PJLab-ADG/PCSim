@@ -24,6 +24,10 @@ FLidarDescription create_Surround(const std::string& lidar_name)
 	{
 		return create_hdl64();
 	}
+	else if (lidar_name == "hdl32")
+	{
+		return create_hdl32();
+	}
 	else if (lidar_name == "pandar_qt")
 	{
 		return create_pandar_qt();
@@ -179,10 +183,10 @@ FLidarDescription create_hdl64()
 	hdl64.LidarType = "Surround";
 	hdl64.NAME = "hdl64";
 	hdl64.Channels=64;
-    hdl64.Range=200;
+    hdl64.Range=120;
     hdl64.HorizontalFov=360.0f;
     hdl64.RotationFrequency=10.0f;
-    // hdl64.PointsPerSecond=
+    hdl64.PointsPerSecond=1300000;
     for (int i = 0; i < 64; i++) {
         hdl64.vfov.push_back(-24.9 + 0.427 * i);
     }
@@ -341,4 +345,19 @@ FLidarDescription create_os1_64_gen2()
 	os1_64_gen2.NoiseStdDev = 0;
 
 	return os1_64_gen2;
+}
+FLidarDescription create_hdl32()
+{	
+	FLidarDescription hdl32;
+	hdl32.LidarType = "Surround";
+	hdl32.NAME = "hdl32";
+	hdl32.Channels=32;
+	hdl32.Range=70;
+	hdl32.HorizontalFov=360.0f;
+	hdl32.RotationFrequency=20.0f;
+	hdl32.PointsPerSecond=1300000;
+	for (int i = 0; i < 32; i++) {
+		hdl32.vfov.push_back(-30.67 + (41.33f/31.0f) * i);
+	}
+	return hdl32;
 }
