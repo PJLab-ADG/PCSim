@@ -56,6 +56,10 @@ FLidarDescription create_Surround(const std::string& lidar_name)
 	{
 		return create_os1_64_gen2();
 	}
+	else if (lidar_name == 'waymo_top')
+	{
+		return create_waymo_top()
+	}
 	return FLidarDescription(); //return a default description
 }
 
@@ -346,6 +350,8 @@ FLidarDescription create_os1_64_gen2()
 
 	return os1_64_gen2;
 }
+
+//13. hdl32
 FLidarDescription create_hdl32()
 {
 	FLidarDescription hdl32;
@@ -360,4 +366,26 @@ FLidarDescription create_hdl32()
 		hdl32.vfov.push_back(-30.67 + (41.33f/31.0f) * i);
 	}
 	return hdl32;
+}
+
+//14. waymo top
+FLidarDescription create_waymo_top()
+{
+	FLidarDescription waymo_top;
+	waymo_top.LidarType = "Surround";
+	waymo_top.NAME = "waymo_top";
+	waymo_top.Channels = 64;
+	waymo_top.Range = 75; // m
+	waymo_top.HorizontalFov = 360.0f;
+	waymo_top.RotationFrequency = 10.0f;
+	waymo_top.PointsPerSecond = 1696000;
+
+	for (int i = 0; i < 64; i++) {
+		waymo_top.vfov.push_back(-17.6 + (20.0f / 63.0f) * i);
+	}
+	waymo_top.NoiseStdDev = 0.025;
+	waymo_top.DropOffAtZeroIntensity = 0.18;
+	waymo_top.DropOffIntensityLimit = 0.5;
+	waymo_top.DropOffGenRate = 0.1;
+	return waymo_top;
 }
