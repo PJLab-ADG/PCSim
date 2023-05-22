@@ -56,9 +56,9 @@ FLidarDescription create_Surround(const std::string& lidar_name)
 	{
 		return create_os1_64_gen2();
 	}
-	else if (lidar_name == 'waymo_top')
+	else if (lidar_name == "waymo_top")
 	{
-		return create_waymo_top()
+		return create_waymo_top();
 	}
 	return FLidarDescription(); //return a default description
 }
