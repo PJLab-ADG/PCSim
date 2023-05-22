@@ -42,3 +42,6 @@ FLidarDescription create_os1_64_gen2();
 
 //13. hdl32e
 FLidarDescription create_hdl32();
+
+//14. waymo top
+FLidarDescription create_waymo_top();
