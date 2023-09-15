@@ -1,4 +1,4 @@
-# PCSim
+# PCSim: LiDAR Point Cloud Simulation and Sensor Placement
 
 
 
