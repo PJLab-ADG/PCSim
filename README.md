@@ -165,3 +165,4 @@ lidar_bp.set_attribute("name","waymo_top")
    ```bash
       python preprocess/waymo_converter.py
    ```
+The fbx and pkl file can be access from [google drive](https://drive.google.com/drive/folders/1r6_4OlHrg_mXQK7PHKcOXEIF5n3CFNyH?usp=sharing)
