@@ -68,6 +68,10 @@ make launch
 #### 4. Create LiDAR
 
 
+
+
+
+
 ```
 lidar_bp = world.get_blueprint_library().find('sensor.lidar.ray_cast') # choose ray_cast or ray_cast_semantic
 
@@ -98,7 +102,6 @@ lidar_motion_distort = LidarMotonDistortion("./horizon/", 10) # file_path is whe
 ```
 ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data, True))
 ```
-
 ### Results
 
 ####	LiDAR beam simulation
@@ -127,6 +130,7 @@ We build our evaluation code upon [v2x-vit](https://github.com/DerrickXuNu/v2x-v
 
 ## RainyPCSim
 Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.
+https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830efe28c
 ### Requirements
 + Carla (>=0.9.12)
 ### Usage
