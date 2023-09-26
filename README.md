@@ -130,6 +130,7 @@ We build our evaluation code upon [v2x-vit](https://github.com/DerrickXuNu/v2x-v
 
 ## RainyPCSim
 Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.
+
 https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830efe28c
 ### Requirements
 + Carla (>=0.9.12)
