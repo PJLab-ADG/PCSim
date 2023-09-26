@@ -35,9 +35,8 @@ class Camera:
 
 
 class LiDAR:
-    def __init__(self, world, sequence, vis_o3d=False, save_local=False, save_petrel=False):
+    def __init__(self, world, sequence, vis_o3d=False, save_local=False):
         self.vis_o3d = vis_o3d
-        self.save_petrel = save_petrel
         self.save_local = save_local
         self.data_queue = Queue(maxsize=32)
         self.lidar_bp = None
@@ -50,12 +49,8 @@ class LiDAR:
             self.vis_window = None
             self.pointcloud = None
             self.init_vis()
-        if self.save_petrel is True:
-            from petrel_client.client import Client
-            self.petrel_client = Client('/home/PJLAB/caixinyu/.petreloss.conf')
-            self.petrel_save_dir = os.path.join('s3://feiben/Reconstruction/waymo2kitti_sim/', sequence)
         if self.save_local is True:
-            self.local_save_dir = os.path.join('./data/', sequence, 'npy')
+            self.local_save_dir = os.path.join('./lidar_data/', sequence, 'npy')
             if not os.path.isdir(self.local_save_dir):
                 os.makedirs(self.local_save_dir)
 
@@ -131,11 +126,6 @@ class LiDAR:
             points[:, :1] = -points[:, :1]
             # intensity = data[:, -1]
             if self.vis_o3d:
-                # intensity_col = 1.0 - np.log(intensity) / np.log(np.exp(-0.004 * 100))
-                # int_color = np.c_[
-                #     np.interp(intensity_col, VID_RANGE, VIRIDIS[:, 0]),
-                #     np.interp(intensity_col, VID_RANGE, VIRIDIS[:, 1]),
-                #     np.interp(intensity_col, VID_RANGE, VIRIDIS[:, 2])]
                 int_color = np.ones_like(points)
                 self.pointcloud.points = o3d.utility.Vector3dVector(points)
                 self.pointcloud.colors = o3d.utility.Vector3dVector(int_color)
@@ -145,9 +135,6 @@ class LiDAR:
             self.vis_window.poll_events()
             self.vis_window.update_renderer()
             time.sleep(0.05)
-        if self.save_petrel:
-            save_path = os.path.join(self.petrel_save_dir, str(inter_frame).zfill(4) + '.npy')
-            petrel_put_npy(self.petrel_client, save_path, self.data)
         if self.save_local:
             np.save(os.path.join(self.local_save_dir, str(inter_frame).zfill(4) + '.npy'), self.data)
 

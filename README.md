@@ -148,3 +148,15 @@ lidar_bp.set_attribute("lidar_type", "Surround")
 lidar_bp.set_attribute("name","waymo_top")
 ```
 ## ReSimAD
+### Usage
+1. Import uasset to CARLA
+  Follow the instruction [Import a Large Map into CARLA](https://carla.readthedocs.io/en/latest/content_authoring_large_maps/#import-a-large-map-into-carla) to import mesh file(.fbx)
+2. Generate simulated data
+   ```bash
+      python preprocess/create_tracklets_database.py
+      python scene_replay.py --waymo_sequence segment-9320169289978396279_1040_000_1060_000
+   ```
+3. Convert data to Kitti like
+   ```bash
+      python preprocess/waymo_converter.py
+   ```

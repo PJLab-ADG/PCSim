@@ -17,7 +17,9 @@ def soft_mkdir(path):
     if os.path.exists(path) is False:
         os.mkdir(path)
 
-
+"""
+Pre-processing for subsequent simulations, extract the pose and label from the waymo raw sequence to pkl info.
+"""
 class WaymoTracker(object):
     def __init__(self, dataset_dir: str, out_dir: str, kitti_size_adapt=False):
         self.extra_pedestrian = 15
@@ -269,14 +271,14 @@ parser = argparse.ArgumentParser(description='extract tracklet from dataset')
 parser.add_argument(
     '--root-path',
     type=str,
-    default='/home/PJLAB/caixinyu/Documents/Waymo-Sim/waymo_sequence', # '/media/PJLAB\\caixinyu/Elements SE/WaymoSim/extra_seg',
-help = 'specify the root path of dataset')
+    default='./waymo_sequence', 
+    help = 'the root path of waymo raw sequence dir')
 parser.add_argument(
     '--out-dir',
     type=str,
     default='./config/vec_track',
     required=False,
-    help='name of info pkl')
+    help='output dir of processed trajectory and labeling info')
 args = parser.parse_args()
 
 if __name__ == '__main__':

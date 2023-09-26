@@ -43,6 +43,7 @@ class Waymo2KITTI(object):
 
     def __init__(self,
                  load_dir,
+                 point_cloud_root_dir,
                  save_dir,
                  prefix,
                  workers=16,
@@ -80,6 +81,7 @@ class Waymo2KITTI(object):
         }
         self.load_dir = load_dir
         self.save_dir = save_dir
+        self.point_cloud_root_dir = point_cloud_root_dir
         self.prefix = prefix
         self.workers = int(workers)
         self.vec_track_dir = './config/vec_track'
@@ -108,15 +110,11 @@ class Waymo2KITTI(object):
         self.image_save_dir = f'{self.save_dir}/image_2'
         self.calib_save_dir = f'{self.save_dir}/calib'
         self.point_cloud_save_dir = f'{self.save_dir}/velodyne'
-        self.point_cloud_root_dir = '/media/PJLAB\\caixinyu/Elements SE/WaymoSim/once_raw'
-        # '/home/PJLAB/caixinyu/Documents/Waymo-Sim/src/data'  # '/media/PJLAB\\caixinyu/Elements SE/WaymoSim/nus_raw'  # os.path.join(self.save_dir, os.pardir)
         self.create_folder()
 
     def convert(self):
         """Convert action."""
         print('Start converting ...')
-        # mmengine.track_parallel_progress(self.convert_one, range(len(self)),
-        #                                  self.workers)
         for i in range(len(self)):
             self.convert_one(i)
         print('\nFinished ...')
@@ -313,56 +311,6 @@ class Waymo2KITTI(object):
             fp_carla.write(line_carla_box)
         fp_carla.close()
 
-        # for obj in frame.laser_labels:
-        #     bounding_box = None
-        #     id = obj.id
-        #     box3d = obj.box
-        #     if bounding_box is None:
-        #         bounding_box = (0, 0, 0, 0)
-        #     my_type = self.type_list[obj.type]
-        #     if my_type not in self.selected_waymo_classes:
-        #         continue
-        #     my_type = self.waymo_to_kitti_class_map[my_type]
-        #     # height = box3d.height
-        #     # width = box3d.width
-        #     # length = box3d.length
-        #     box = np.array(self.bounding_box_db[str(my_type).lower()][track_db['objects'][id]['bp']])
-        #     box += np.random.normal(0, box / 150, box.shape)
-        #     length, width, height = box[0], box[1], box[2]
-        #     if my_type == 'Cyclist':
-        #         height = box3d.height
-        #         length = box3d.length
-        #         width = box3d.width
-        #     elif my_type == 'Pedestrian':
-        #         for fore_obj in track_db['frames'][frame_idx]['foreground']:
-        #             if fore_obj['id'] == id:
-        #                 length = height / 4 * (math.sin(math.radians(fore_obj['left_roll'])) +
-        #                                        math.sin(math.radians(fore_obj['right_roll']))) + length
-        #                 break
-        #     x = box3d.center_x + 0.595
-        #     y = box3d.center_y
-        #     z = box3d.center_z - height / 2 - 1.85  # FOR KITTI PCD
-        #
-        #     # project bounding box to the virtual reference frame
-        #     pt_ref = self.T_velo_to_front_cam @ \
-        #              np.array([x, y, z, 1]).reshape((4, 1))
-        #     x, y, z, _ = pt_ref.flatten().tolist()
-        #
-        #     rotation_y = -box3d.heading - np.pi / 2
-        #     truncated = 0
-        #     occluded = 0
-        #     alpha = -10
-        #     line_carla_box = my_type + \
-        #                      ' {} {} {} {} {} {} {} {} {} {} {} {} {} {}\n'.format(
-        #                          round(truncated, 2), occluded, round(alpha, 2),
-        #                          round(bounding_box[0], 2), round(bounding_box[1], 2),
-        #                          round(bounding_box[2], 2), round(bounding_box[3], 2),
-        #                          round(height, 2), round(width, 2), round(length, 2),
-        #                          round(x, 2), round(y, 2), round(z, 2),
-        #                          round(rotation_y, 2))
-        #     fp_carla.write(line_carla_box)
-        # fp_carla.close()
-
     def create_folder(self):
         """Create folder for data preprocessing."""
         dir_list1 = [
@@ -402,12 +350,9 @@ class Waymo2KITTI(object):
 
 
 if __name__ == '__main__':
-    converter = Waymo2KITTI('/media/PJLAB\\caixinyu/Elements SE/WaymoSim/seg',
-                            '/media/PJLAB\\caixinyu/Elements SE/WaymoSim/dataset/once_13k', '',
+    converter = Waymo2KITTI('./waymo_sequence',
+                            './lidar_data'
+                            './outdir/', '',
                             mode=CONVERT_ALL)
 
     converter.convert()
-
-#         self.tfrecord_pathnames = sorted(
-#             glob(join(self.load_dir, '*.tfrecord')),
-#             key=lambda x: self.sequence_index[os.path.split(x)[-1].split('.')[0].split('_with_camera_label')[0]])

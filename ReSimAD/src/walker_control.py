@@ -47,14 +47,3 @@ class BaseWalkerPose:
         walker = world.try_spawn_actor(blueprint, spawn_point)
         walker.set_simulate_physics(False)
         self.control(walker, 35, 35)
-
-
-"""
-R 56 idx
-L 61
-
-"""
-
-if __name__ == '__main__':
-    b = BaseWalkerPose()
-    b.demo()

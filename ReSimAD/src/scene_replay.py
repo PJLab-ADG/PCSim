@@ -235,51 +235,6 @@ class World(object):
         if self.mesh is not None and self.mesh.is_alive:
             self.mesh.destroy()
 
-
-def replay_all(args):
-    if not os.path.exists(args.waymo_sequence_txt):
-        raise Exception('no such file' + 'waymo_sequence_txt')
-    sequences = []
-    with open(args.waymo_sequence_txt, 'r') as f:
-        # self.sequence_index = json.load(f)
-        for line in f:
-            sequences.append(line.split(' ')[0])
-    world = None
-    client = carla.Client(args.host, args.port)
-    client.set_timeout(10.0)
-    sim_world = client.get_world()
-    original_settings = sim_world.get_settings()
-    settings = sim_world.get_settings()
-    settings.synchronous_mode = True
-    settings.fixed_delta_seconds = 0.1
-    sim_world.apply_settings(settings)
-    traffic_manager = client.get_trafficmanager()
-    traffic_manager.set_synchronous_mode(True)
-    for seq in sequences:
-        try:
-            world = World(sim_world, seq)
-            sim_world.tick()
-            while world.inter_frame < len(world.frames):
-                print(world.inter_frame)
-                world.refresh_traffic_flow()
-                frame = sim_world.tick()
-                world.tick(frame)
-            if world is not None:
-                world.destroy_all()
-
-        except Exception as e:
-            import traceback
-            print('exception')
-            print(traceback.format_exc())
-            print(e)
-        finally:
-            print('destroying all actor')
-            if world is not None:
-                world.destroy_all()
-    if original_settings:
-        sim_world.apply_settings(original_settings)
-
-
 def replay_one(args):
     world = None
     original_settings = None
@@ -345,28 +300,16 @@ def main():
         default='1280x720',
         help='window resolution (default: 1280x720)')
     argparser.add_argument(
-        '--replay',
-        metavar='type',
-        default='one',
-        help='actor role name (default: "hero")')
-    argparser.add_argument(
         '--waymo_sequence',
-        default='segment-11070802577416161387_740_000_760_000', )
-    argparser.add_argument(
-        '--waymo_sequence_txt',
-        default='/home/PJLAB/caixinyu/Documents/Waymo-Sim/src/config/sequence_replay.txt', )
+        default='segment-9320169289978396279_1040_000_1060_000', )
     args = argparser.parse_args()
 
     log_level = logging.DEBUG if args.debug else logging.INFO
     logging.basicConfig(format='%(levelname)s: %(message)s', level=log_level)
     logging.info('listening to server %s:%s', args.host, args.port)
-
-    if args.replay == 'one':
-        replay_one(args)
-    elif args.replay == 'txt':
-        replay_all(args)
+    
+    replay_one(args)
 
 
 if __name__ == '__main__':
     main()
-    print('finished')
