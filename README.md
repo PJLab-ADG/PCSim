@@ -5,6 +5,7 @@
 - [LiDAR Placement Evaluation in V2X Scenario](#lidar-placement-evaluation-in-v2x-scenario)
 - [RainyPCSim](#rainypcsim)
 - [ReSimAD](#resimad)
+- [Technical Papers](#technical-papers)
 <!-- - [Citation](#citation) -->
 
 
@@ -118,7 +119,7 @@ ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data
 
 
 ## LiDAR Placement Evaluation in V2X Scenario
-[![pdf](https://img.shields.io/badge/PDF-Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving-blue)](https://colalab.net/media/paper/Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving.pdf)
+<!-- [![pdf](https://img.shields.io/badge/PDF-Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving-blue)](https://colalab.net/media/paper/Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving.pdf) -->
 
 We build our evaluation code upon [v2x-vit](https://github.com/DerrickXuNu/v2x-vit) project.
 ### Usage
@@ -166,3 +167,34 @@ lidar_bp.set_attribute("name","waymo_top")
       python preprocess/waymo_converter.py
    ```
 The fbx and pkl file can be access from [google drive](https://drive.google.com/drive/folders/1r6_4OlHrg_mXQK7PHKcOXEIF5n3CFNyH?usp=sharing)
+
+
+## Technical Papers
+```
+@inproceedings{cai2023analyzing,
+  title={Analyzing Infrastructure LiDAR Placement with Realistic LiDAR Simulation Library},
+  author={Cai, Xinyu and Jiang, Wentao and Xu, Runsheng and Zhao, Wenquan and Ma, Jiaqi and Liu, Si and Li, Yikang},
+  booktitle={2023 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={5581--5587},
+  year={2023},
+  organization={IEEE}
+}
+```
+
+```
+@article{yang2023rainy,
+  title={Realistic Rainy Weather Simulation for LiDARs in CARLA Simulator},
+  author={Donglin Yang, Zhenfeng Liu, Wentao Jiang, Guohang Yan, Xing Gao, Botian Shi, Si Liu, Xinyu Cai},
+  journal={under review},
+  year={2023}
+}
+```
+
+```
+@article{zhang2023resimad,
+  title={ReSimAD: Zero-Shot 3D Domain Transfer for Autonomous Driving with Source Reconstruction and Target Simulation},
+  author={Zhang, Bo and Cai, Xinyu and Yuan, Jiakang and Yang, Donglin and Guo, Jianfei and Xia, Renqiu and Shi, Botian and Dou, Min and Chen, Tao and Liu, Si and others},
+  journal={arXiv preprint arXiv:2309.05527},
+  year={2023}
+}
+```
