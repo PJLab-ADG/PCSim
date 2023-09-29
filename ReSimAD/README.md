@@ -34,7 +34,7 @@ Following [LiDAR Simulation Library](../README.md/#lidar-simulation-library) to 
 
 ## Generate simulated data
 
-1. Prepare intermediate pkl file
+### 1. Prepare intermediate pkl file
 
     Organize the raw Waymo files(*.tfrecord) in `waymo_sequence` folder. 
 
@@ -44,9 +44,9 @@ Following [LiDAR Simulation Library](../README.md/#lidar-simulation-library) to 
     python preprocess/create_tracklets_database.py
     ```
 
-2. Simulated in CARLA
+### 2. Simulated in CARLA
     
-    In [lidar_sensor](ReSimAD/src/sensor_generator.py), 
+    In [lidar_sensor python file](ReSimAD/src/sensor_generator.py), 
     - `local_save_dir` *line 53*: change the lidar data save path
     - `lidar_name` *line 58*: change different LiDAR, such as: "hdl64", "hdl32", "pandar_40p" ...
     - `lidar_transform` *line 62*: change the attachment location of LiDAR.
@@ -56,7 +56,7 @@ Following [LiDAR Simulation Library](../README.md/#lidar-simulation-library) to 
     python scene_replay.py --waymo_sequence segment-9320169289978396279_1040_000_1060_000
     ```
 
-3. Convert lidar data to Kitti like using the annotations from intermediate file.
+### 3. Convert lidar data to Kitti like using the annotations from intermediate file.
     ```bash
     python preprocess/waymo_converter.py
     ```

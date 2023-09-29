@@ -103,15 +103,15 @@ ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data
 ```
 ### Results
 
-####	LiDAR beam simulation
+#### LiDAR beam simulation
 
 ![LiDAR_beam_simulation](pic/lidarsim.png)
 
-####	Motion distortion simulation
+#### Motion distortion simulation
 
 ![Motion_distortion_simulation](pic/motionDistortion.png)
 
-####	Ghosting object effect simulation
+#### Ghosting object effect simulation
 
 ![Ghosting_object_effect_simulation](pic/ghostingEffect.png)
 
@@ -119,16 +119,19 @@ ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data
 
 ## LiDAR Placement Evaluation in V2X Scenario
 <!-- [![pdf](https://img.shields.io/badge/PDF-Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving-blue)](https://colalab.net/media/paper/Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving.pdf) -->
-
+<details>
+<summary>Implement Details</summary>
 We build our evaluation code upon [v2x-vit](https://github.com/DerrickXuNu/v2x-vit) project.
+
 ### Usage
 
 1. Follow the instruction in the readme page in [v2x-vit](https://github.com/DerrickXuNu/v2x-vit) and install the v2x-vit project.
 2. Download the pretrained model from [here](https://drive.google.com/drive/folders/1h2UOPP2tNRkV_s6cbKcSfMvTgb8_ZFj9?usp=sharing).
 3. Use the script in Placement-Evaluation/v2xvit/tools/inference.py for evaluation.
-
+</details>
 
 ## RainyPCSim
+
 Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.
 
 https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830efe28c
@@ -142,11 +145,11 @@ https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830e
 1. Following [LiDAR Simulation Library](#usage) 
    Copy and modify files from RainyPCSIM/carla/* to $CARLA_ROOT
 2. Rebuild carla
-```bash
-make clean
-make PythonAPI
-make launch
-```
+   ```bash
+   make clean
+   make PythonAPI
+   make launch
+   ```
 3. Launch CARLA, and open `$CARLA_ROOT/Unreal/CarlaUE4/Content/Carla/Blueprints/Vehicles/BaseVehiclePawn.uasset` in the blueprint editor.
 4. Add component ProxyParticleSpawn.uasset. Click `Add Component` botton, search and add ProxyParticleSpawn component.
    &ensp;
@@ -160,8 +163,6 @@ make launch
    lidar_bp.set_attribute("name","waymo_top")
    ```
 
-</details>
-
 ### Data collection
 We build our synthetic dataset using [OpenCDA](https://github.com/ucla-mobility/OpenCDA) simulation tool.
 ### Weather-based Intensity predictor
@@ -172,6 +173,7 @@ Please refer to [Intensity_predictor.md](RainyPCSim/intensity_predictor/README.m
   <img src="pic/weather_intensity_predictor.png" width="40%">
   <div>The network structure information of weather-based Intensity predictor, where we leverage multi-channel data to predict the point-cloud intensity</div>
 </p>
+</details>
 
 ## ReSimAD
 
