@@ -10,10 +10,13 @@
 
 
 ## LiDAR Simulation Library 
+
 [![arXiv](https://img.shields.io/badge/arXiv-2211.15975-b31b1b.svg)](https://arxiv.org/abs/2211.15975)
 
 https://user-images.githubusercontent.com/21357317/192964768-1b8711a5-742b-4b5b-bf59-c318e2e5c464.mp4
 
+<details>
+<summary>LiDAR Simulation Library Details</summary>
 ### Requirements
 
 + Carla (>=0.9.12)
@@ -112,6 +115,7 @@ ego_lidar.listen(lambda data: lidar_motion_distort.enable_motion_distortion(data
 
 ![Ghosting_object_effect_simulation](pic/ghostingEffect.png)
 
+</details>
 
 ## LiDAR Placement Evaluation in V2X Scenario
 <!-- [![pdf](https://img.shields.io/badge/PDF-Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving-blue)](https://colalab.net/media/paper/Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving.pdf) -->
@@ -128,6 +132,10 @@ We build our evaluation code upon [v2x-vit](https://github.com/DerrickXuNu/v2x-v
 Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.
 
 https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830efe28c
+
+<details>
+<summary>RainyPCSim Details</summary>
+
 ### Requirements
 + Carla (>=0.9.12)
 ### Usage
@@ -151,6 +159,9 @@ make launch
    lidar_bp.set_attribute("lidar_type", "Surround")
    lidar_bp.set_attribute("name","waymo_top")
    ```
+
+</details>
+
 ### Data collection
 We build our synthetic dataset using [OpenCDA](https://github.com/ucla-mobility/OpenCDA) simulation tool.
 ### Weather-based Intensity predictor
@@ -162,13 +173,16 @@ Please refer to [Intensity_predictor.md](RainyPCSim/intensity_predictor/README.m
   <div>The network structure information of weather-based Intensity predictor, where we leverage multi-channel data to predict the point-cloud intensity</div>
 </p>
 
-
-
 ## ReSimAD
+
 Please refer to [ReSimAD/README.md](ReSimAD/README.md) to learn more usage about the project.
 
+<p align="center">
+  <img src="pic/ReSimAD_simulated_scene.png" width="80%">
+</p>
 
 ## Technical Papers
+
 ```
 @inproceedings{cai2023analyzing,
   title={Analyzing Infrastructure LiDAR Placement with Realistic LiDAR Simulation Library},
