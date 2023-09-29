@@ -1,0 +1,24 @@
+model:
+  head_cls: ReflectHead
+  squeeze_kwargs:
+    squeeze_depth: 3
+    cam_depth: 1
+    conv_starts: 64
+    squeeze_start: 16
+    ef_start: 64
+  head_kwargs:
+    in_channels: 64
+    mid_channels: 32
+    return_value: True
+gt_keys:
+  - intensity_bin
+  - intensity_dist
+  - mask
+loss:
+  reflect: True
+  l2_weight: 1
+  ignore_index: 4
+info_fn:
+  reflect: True
+  ignore_index: 4
+base_dir: /home/PJLAB/yangdonglin/workplace/lidar-intensity/runs

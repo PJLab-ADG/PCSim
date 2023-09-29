@@ -1,0 +1,16 @@
+model:
+  squeeze_kwargs:
+    input_channels: 4
+pass_keys:
+  - depth
+  - labels_embed
+  - mask
+gt_keys:
+  - labels
+embed:
+  num_embeddings: 5
+  embedding_dim: 2
+  max_norm: 1
+embed_channels:
+  - labels
+store_dir: dl

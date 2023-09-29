@@ -1,0 +1,103 @@
+model:
+  head_cls: L2ReflectHead
+  squeeze_kwargs:
+    input_channels: 8
+    squeeze_depth: 3
+    cam_depth: 1
+    conv_starts: 64
+    squeeze_start: 16
+    ef_start: 64
+  head_kwargs:
+    in_channels: 64
+    mid_channels: 32
+gt_keys:
+  - intensity
+  - mask
+  - rgb_mask
+  - labels
+loss:
+  reflect: True
+  l2_weight: 1
+  weather: False
+  only_l2: True
+  ignore_index: 32
+info_fn:
+  reflect: True
+  ignore_index: 32
+base_dir: /mnt/data/ADG_1/yangdonglin/workplace/lidar-intensity/runs
+
+pass_keys:
+  - depth
+  - labels_embed
+  - rgb
+  - rgb_mask
+  - mask
+embed:
+  num_embeddings: 24
+  embedding_dim: 2
+  max_norm: 1
+embed_channels:
+  - labels
+store_dir: drgbl_l2_no_weather_1376
+image_fn:
+  reflect: True
+base_save: 'eval'
+train_save: 'train'
+val_save: 'val'
+epochs:  &epochs 400
+scheduler:
+  name: CosineAnnealingLR
+  eta_min: 1e-6
+  T_max: *epochs
+
+optim:
+  name: AdamW
+  lr: 0.01
+  weight_decay: 0.005
+
+device: 0
+seed: 0
+cat_channels: Truels
+
+keep_ram: True
+
+train:
+  folder: /mnt/data/ADG_1/caixinyu/dataset/intensity/train
+  name: intensity
+  ext: .npy
+  shuffle: True
+  keep_ram: True
+  limits:
+    - min: 0
+      max: 64
+    - min: 637
+      max: 2013
+val:
+  folder: /mnt/data/ADG_1/caixinyu/dataset/intensity/val_by_weather/1
+  name: intensity_val
+  ext: .npy
+  shuffle: False
+  keep_ram: True
+  limits:
+    - min: 0
+      max: 64
+    - min: 637
+      max: 2013
+#512
+train_loader:
+  batch_size: 24
+  shuffle: True
+  num_workers: 8
+  pin_memory: True
+val_loader:
+  batch_size: 4
+  shuffle: False
+  num_workers: 4
+  pin_memory: True
+
+checkpoint: /home/admin/workspace/yangdonglin/workplace/lidar-intensity/runs/drgbl_l2_no_weather_1376_20230902111206
+image_fn:
+  reflect: True
+base_save: 'eval'
+train_save: 'train'
+val_save: 'val'

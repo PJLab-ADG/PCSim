@@ -1,0 +1,11 @@
+.vscode
+__pycache__
+*.py[cod]
+.mypy_cache
+build
+*.so
+dataset
+runs
+*.log
+*.pt
+*.bk

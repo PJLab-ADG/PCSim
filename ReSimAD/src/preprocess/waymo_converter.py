@@ -351,8 +351,8 @@ class Waymo2KITTI(object):
 
 if __name__ == '__main__':
     converter = Waymo2KITTI('./waymo_sequence',
-                            './lidar_data'
-                            './outdir/', '',
+                            './data/synthetic_lidar_data'
+                            './data/kitti_like/', '',
                             mode=CONVERT_ALL)
 
     converter.convert()

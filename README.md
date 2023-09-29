@@ -68,11 +68,6 @@ make launch
 
 #### 4. Create LiDAR
 
-
-
-
-
-
 ```
 lidar_bp = world.get_blueprint_library().find('sensor.lidar.ray_cast') # choose ray_cast or ray_cast_semantic
 
@@ -137,7 +132,7 @@ https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830e
 + Carla (>=0.9.12)
 ### Usage
 1. Following [LiDAR Simulation Library](#usage) 
-   Copy and modify files from RainyPCSIM/* to $CARLA_ROOT
+   Copy and modify files from RainyPCSIM/carla/* to $CARLA_ROOT
 2. Rebuild carla
 ```bash
 make clean
@@ -146,27 +141,31 @@ make launch
 ```
 3. Launch CARLA, and open `$CARLA_ROOT/Unreal/CarlaUE4/Content/Carla/Blueprints/Vehicles/BaseVehiclePawn.uasset` in the blueprint editor.
 4. Add component ProxyParticleSpawn.uasset. Click `Add Component` botton, search and add ProxyParticleSpawn component.
-![add_component](pic/modify_base_vehicle_pawn.png)
+   &ensp;
+   <p align="center">
+   <img src="pic/modify_base_vehicle_pawn.png" width="50%">
+   </p>
 5. Create waymo_top LiDAR
-```
-lidar_bp = world.get_blueprint_library().find('sensor.lidar.ray_cast')
-lidar_bp.set_attribute("lidar_type", "Surround")
-lidar_bp.set_attribute("name","waymo_top")
-```
+   ```
+   lidar_bp = world.get_blueprint_library().find('sensor.lidar.ray_cast')
+   lidar_bp.set_attribute("lidar_type", "Surround")
+   lidar_bp.set_attribute("name","waymo_top")
+   ```
+### Data collection
+We build our synthetic dataset using [OpenCDA](https://github.com/ucla-mobility/OpenCDA) simulation tool.
+### Weather-based Intensity predictor
+Please refer to [Intensity_predictor.md](RainyPCSim/intensity_predictor/README.md) to learn more usage about the predictor module.
+
+&ensp;
+<p align="center">
+  <img src="pic/weather_intensity_predictor.png" width="40%">
+  <div>The network structure information of weather-based Intensity predictor, where we leverage multi-channel data to predict the point-cloud intensity</div>
+</p>
+
+
+
 ## ReSimAD
-### Usage
-1. Import uasset to CARLA
-  Follow the instruction [Import a Large Map into CARLA](https://carla.readthedocs.io/en/latest/content_authoring_large_maps/#import-a-large-map-into-carla) to import mesh file(.fbx)
-2. Generate simulated data
-   ```bash
-      python preprocess/create_tracklets_database.py
-      python scene_replay.py --waymo_sequence segment-9320169289978396279_1040_000_1060_000
-   ```
-3. Convert data to Kitti like
-   ```bash
-      python preprocess/waymo_converter.py
-   ```
-The fbx and pkl file can be access from [google drive](https://drive.google.com/drive/folders/1r6_4OlHrg_mXQK7PHKcOXEIF5n3CFNyH?usp=sharing)
+Please refer to [ReSimAD/README.md](ReSimAD/README.md) to learn more usage about the project.
 
 
 ## Technical Papers

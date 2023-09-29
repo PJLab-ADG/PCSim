@@ -1,0 +1,7 @@
+model:
+  squeeze_kwargs:
+    input_channels: 2
+pass_keys:
+  - depth
+  - mask
+store_dir: d

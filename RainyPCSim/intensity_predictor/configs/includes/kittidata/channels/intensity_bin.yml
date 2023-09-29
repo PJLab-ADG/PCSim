@@ -1,0 +1,14 @@
+val:
+  channels:
+    - name: intensity_bin
+      start: 5
+      end: 6
+      retype: i8
+      squeeze: True
+train:
+  channels:
+    - name: intensity_bin
+      start: 5
+      end: 6
+      retype: i8
+      squeeze: True

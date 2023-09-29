@@ -1,0 +1,12 @@
+val:
+  channels:
+    - name: intensity_dist
+      start: 6
+      end: 7
+      retype: f4
+train:
+  channels:
+    - name: intensity_dist
+      start: 6
+      end: 7
+      retype: f4

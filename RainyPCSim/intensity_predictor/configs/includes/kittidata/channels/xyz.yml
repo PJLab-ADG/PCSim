@@ -1,0 +1,18 @@
+val:
+  channels:
+    - name: xyz
+      start: 1
+      end: 4
+      scale:
+        min: -131.0
+        max: 131.0
+      retype: f4
+train:
+  channels:
+    - name: xyz
+      start: 1
+      end: 4
+      scale:
+        min: -131.0
+        max: 131.0
+      retype: f4

@@ -1,0 +1,7 @@
+image_fn:
+  reflect: True
+base_save: eval199
+train_save: train
+val_save: val
+checkpoint: 199.tar
+keep_ram: False

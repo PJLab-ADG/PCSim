@@ -1,0 +1,8 @@
+- includes/kittidata/channels/depth.yml
+- includes/kittidata/channels/intensity.yml
+- includes/kittidata/channels/labels.yml
+- includes/kittidata/channels/xyz.yml
+- includes/kittidata/channels/rgb.yml
+- includes/kittidata/channels/rgb_mask.yml
+- includes/kittidata/channels/mask.yml
+- includes/reflect_configs/model_l2_v2_1376.yml
