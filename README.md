@@ -142,7 +142,7 @@ https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830e
 ### Requirements
 + Carla (>=0.9.12)
 ### Usage
-1. Following [LiDAR Simulation Library](#usage) 
+1. Following [LiDAR Simulation Library](#lidar-simulation-library) 
    Copy and modify files from RainyPCSIM/carla/* to $CARLA_ROOT
 2. Rebuild carla
    ```bash
