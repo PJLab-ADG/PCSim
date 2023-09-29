@@ -30,7 +30,7 @@
 Follow the instruction [Import a Large Map into CARLA](https://carla.readthedocs.io/en/latest/content_authoring_large_maps/#import-a-large-map-into-carla) to import reconstruct mesh file(.fbx)
 
 ## Build LiDAR
-Following [LiDAR Simulation Library](../README.md/#lidar-simulation-library) to use build different LiDAR.
+Follow [LiDAR Simulation Library](../README.md/#lidar-simulation-library) to use build different LiDAR.
 
 ## Generate simulated data
 
