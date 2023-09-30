@@ -1,0 +1,11 @@
+model:
+  squeeze_kwargs:
+    input_channels: 6
+pass_keys:
+  - depth
+  - rgb
+  - rgb_mask
+  - mask
+gt_keys:
+  - rgb_mask
+store_dir: drgb

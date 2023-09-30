@@ -50,9 +50,8 @@ class LiDAR:
             self.pointcloud = None
             self.init_vis()
         if self.save_local is True:
-            self.local_save_dir = os.path.join('./lidar_data/', sequence, 'npy')
-            if not os.path.isdir(self.local_save_dir):
-                os.makedirs(self.local_save_dir)
+            self.local_save_dir = os.path.join('./data/synthetic_lidar_data/', sequence, 'npy')
+            os.makedirs(self.local_save_dir, exist_ok=True)
 
     def full_init(self):
         self.lidar_bp = self.generate_lidar_bp(self.blueprint_library,

@@ -258,9 +258,6 @@ class WaymoTracker(object):
         self.finish_list = []
         dataset_sequences = glob.glob(os.path.join(self.dataset_dir, '*.tfrecord'))
         for idx, dataset_path in enumerate(dataset_sequences):
-            print(idx, end=' ')
-            # if dataset_path.find('segment-12896629105712361308_4520_000_4540_000') == -1:
-            #     continue
             self.convert_one(dataset_path)
             self.finish_list.append(dataset_path)
         print("Finish dataset:")

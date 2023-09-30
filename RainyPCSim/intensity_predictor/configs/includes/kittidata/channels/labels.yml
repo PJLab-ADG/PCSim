@@ -1,0 +1,14 @@
+val:
+  channels:
+    - name: labels
+      start: 7
+      end: 8
+      retype: i8
+      squeeze: True
+train:
+  channels:
+    - name: labels
+      start: 7
+      end: 8
+      retype: i8
+      squeeze: True

@@ -1,0 +1,12 @@
+train:
+  limits:
+  - min: 0
+    max: 64
+  - min: 805
+    max: 1317
+val:
+  limits:
+  - min: 0
+    max: 64
+  - min: 805
+    max: 1317

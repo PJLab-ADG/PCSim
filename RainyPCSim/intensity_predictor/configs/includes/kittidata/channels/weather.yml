@@ -1,0 +1,14 @@
+val:
+  channels:
+    - name: weather
+      start: 13
+      end: 14
+      retype: i8
+      squeeze: True
+train:
+  channels:
+    - name: weather
+      start: 13
+      end: 14
+      retype: i8
+      squeeze: True

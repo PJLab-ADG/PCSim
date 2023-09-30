@@ -1,0 +1,5 @@
+optim:
+  name: AdamW
+  lr: 0.002
+  weight_decay: 0.005
+epochs: 200

@@ -277,12 +277,7 @@ def replay_one(args):
 
 def main():
     argparser = argparse.ArgumentParser(
-        description='CARLA Manual Control Client')
-    argparser.add_argument(
-        '-v', '--verbose',
-        action='store_true',
-        dest='debug',
-        help='print debug information')
+        description='Simulator Client')
     argparser.add_argument(
         '--host',
         metavar='H',
@@ -295,16 +290,13 @@ def main():
         type=int,
         help='TCP port to listen to (default: 2000)')
     argparser.add_argument(
-        '--res',
-        metavar='WIDTHxHEIGHT',
-        default='1280x720',
-        help='window resolution (default: 1280x720)')
-    argparser.add_argument(
         '--waymo_sequence',
-        default='segment-9320169289978396279_1040_000_1060_000', )
+        default='segment-9320169289978396279_1040_000_1060_000',
+        help="waymo raw segment name. (remove the suffix _with_camera_label)"
+    )
     args = argparser.parse_args()
 
-    log_level = logging.DEBUG if args.debug else logging.INFO
+    log_level = logging.INFO
     logging.basicConfig(format='%(levelname)s: %(message)s', level=log_level)
     logging.info('listening to server %s:%s', args.host, args.port)
     

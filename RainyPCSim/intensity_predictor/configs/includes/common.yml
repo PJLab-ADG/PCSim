@@ -1,0 +1,4 @@
+device: 0
+seed: 0
+cat_channels: True
+keep_ram: True

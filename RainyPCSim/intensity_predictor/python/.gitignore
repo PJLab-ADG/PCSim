@@ -1,0 +1,6 @@
+.vscode
+__pycache__
+*.py[cod]
+.mypy_cache
+build
+*.c

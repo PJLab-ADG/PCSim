@@ -34,11 +34,8 @@ class Waymo2KITTI(object):
 
     Args:
         load_dir (str): Directory to load waymo raw data.
+        point_cloud_root_dir (str): Directory to load lidar data.
         save_dir (str): Directory to save data in KITTI format.
-        prefix (str): Prefix of filename. In general, 0 for training, 1 for
-            validation and 2 for testing.
-        workers (int, optional): Number of workers for the parallel process.
-            Defaults to 64.
     """
 
     def __init__(self,
@@ -51,10 +48,6 @@ class Waymo2KITTI(object):
                  ):
 
         self.selected_waymo_classes = ['VEHICLE', 'PEDESTRIAN', 'CYCLIST']
-
-        # Only data collected in specific locations will be converted
-        # If set None, this filter is disabled
-        # Available options: location_sf (main dataset)
         self.selected_waymo_locations = None
         # turn on eager execution for older tensorflow versions
         if int(tf.__version__.split('.')[0]) < 2:
@@ -127,11 +120,6 @@ class Waymo2KITTI(object):
         """
         pathname = self.tfrecord_pathnames[file_idx]
         sequence_name = os.path.split(pathname)[-1].split('.')[0].split('_with_camera_label')[0]
-        # if sequence_name not in [
-        #     'segment-10072140764565668044_4060_000_4080_000',
-        #     'segment-10664823084372323928_4360_000_4380_000',
-        # ]:
-        #     return
         lidar_dir = f'{self.point_cloud_root_dir}/' + f'{sequence_name}' + '/npy'
         print('converting {}/{} '.format(file_idx, len(self)) + sequence_name)
         file_idx = self.sequence_index[sequence_name]
@@ -223,9 +211,6 @@ class Waymo2KITTI(object):
             camera_calib = list(camera_calib.reshape(12))
             camera_calib = [f'{i:e}' for i in camera_calib]
             camera_calibs.append(camera_calib)
-
-        # all camera ids are saved as id-1 in the result because
-        # camera 0 is unknown in the proto
         for i in range(4):
             calib_context += 'P' + str(i) + ': ' + \
                              ' '.join(camera_calibs[i]) + '\n'
@@ -326,14 +311,6 @@ class Waymo2KITTI(object):
     def cart_to_homo(self, mat):
         """Convert transformation matrix in Cartesian coordinates to
         homogeneous format.
-
-        Args:
-            mat (np.ndarray): Transformation matrix in Cartesian.
-                The input matrix shape is 3x3 or 3x4.
-
-        Returns:
-            np.ndarray: Transformation matrix in homogeneous format.
-                The matrix shape is 4x4.
         """
         ret = np.eye(4)
         if mat.shape == (3, 3):
@@ -350,9 +327,9 @@ class Waymo2KITTI(object):
 
 
 if __name__ == '__main__':
-    converter = Waymo2KITTI('./waymo_sequence',
-                            './lidar_data'
-                            './outdir/', '',
+    converter = Waymo2KITTI('./waymo_sequence/',
+                            './data/synthetic_lidar_data/'
+                            './data/kitti_like/', '',
                             mode=CONVERT_ALL)
 
     converter.convert()

@@ -1,0 +1,12 @@
+val:
+  channels:
+    - name: rgb_mask
+      start: 11
+      end: 12
+      retype: f4
+train:
+  channels:
+    - name: rgb_mask
+      start: 11
+      end: 12
+      retype: f4
