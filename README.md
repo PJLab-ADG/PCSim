@@ -3,6 +3,7 @@
 <!-- - [News](#news-fire) -->
 - [LiDAR Simulation Library](#lidar-simulation-library)
 - [LiDAR Placement Evaluation in V2X Scenario](#lidar-placement-evaluation-in-v2x-scenario)
+- [LiDARPlacementOptimizing](#lidarplacementoptimizing)
 - [RainyPCSim](#rainypcsim)
 - [ReSimAD](#resimad)
 - [Technical Papers](#technical-papers)
@@ -130,6 +131,11 @@ We build our evaluation code upon [v2x-vit](https://github.com/DerrickXuNu/v2x-v
 3. Use the script in Placement-Evaluation/v2xvit/tools/inference.py for evaluation.
 </details>
 
+## LiDARPlacementOptimizing
+[![pdf](https://img.shields.io/badge/PDF-Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving-blue)](https://openaccess.thecvf.com/content/ICCV2023/papers/Jiang_Optimizing_the_Placement_of_Roadside_LiDARs_for_Autonomous_Driving_ICCV_2023_paper.pdf)
+
+Code and usage will be release soon.
+
 ## RainyPCSim
 
 Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.
@@ -193,6 +199,16 @@ Please refer to [ReSimAD/README.md](ReSimAD/README.md) to learn more usage about
   pages={5581--5587},
   year={2023},
   organization={IEEE}
+}
+```
+
+```
+@inproceedings{jiang2023optimizing,
+  title={Optimizing the Placement of Roadside LiDARs for Autonomous Driving},
+  author={Jiang, Wentao and Xiang, Hao and Cai, Xinyu and Xu, Runsheng and Ma, Jiaqi and Li, Yikang and Lee, Gim Hee and Liu, Si},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={18381--18390},
+  year={2023}
 }
 ```
 
