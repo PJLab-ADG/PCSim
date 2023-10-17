@@ -138,7 +138,7 @@ Code and usage will be release soon.
 
 ## RainyPCSim
 
-Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.
+Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.  We have released the [RainyPCSim Dataset](https://openxlab.org.cn/datasets/puffyyy/RainyPCSim/tree/main)  obtained using the this method.
 
 https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830efe28c
 
