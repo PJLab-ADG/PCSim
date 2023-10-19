@@ -66,5 +66,5 @@ Follow [LiDAR Simulation Library](../README.md/#lidar-simulation-library) to use
 
 The demo fbx and pkl file can be access from [google drive](https://drive.google.com/drive/folders/1r6_4OlHrg_mXQK7PHKcOXEIF5n3CFNyH?usp=sharing)
 
-### 4. 
+### 4. Zero-shot domain adaptation
     Please refer to [3DTrans](https://github.com/PJLab-ADG/3DTrans#resimad) for detail zero-shot cross-dataset adaptation results.
