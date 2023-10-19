@@ -27,6 +27,8 @@
   
 ## Prepare mesh for CARLA
 
+Follow  to generate Scenario Meshes.
+Thanks to  for Technical support!!!
 Follow the instruction [Import a Large Map into CARLA](https://carla.readthedocs.io/en/latest/content_authoring_large_maps/#import-a-large-map-into-carla) to import reconstruct mesh file(.fbx)
 
 ## Build LiDAR
