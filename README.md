@@ -138,7 +138,7 @@ Code and usage will be release soon.
 
 ## RainyPCSim
 
-Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.  We have released the [RainyPCSim Dataset](https://openxlab.org.cn/datasets/puffyyy/RainyPCSim/tree/main)  obtained using the this method.
+Simulate rain effect for LiDAR and collect synthetic LiDAR data in CARLA.  We have released the [RainyPCSim Dataset](https://openxlab.org.cn/datasets/puffyyy/RainyPCSim/tree/main).
 
 https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830efe28c
 
@@ -150,6 +150,8 @@ https://github.com/puffyyy/PCSim/assets/63792704/2fb22c7c-d94f-4bee-a2b6-1b3830e
 ### Usage
 1. Following [LiDAR Simulation Library](#lidar-simulation-library) 
    Copy and modify files from RainyPCSIM/carla/* to $CARLA_ROOT
+   
+   such as [RayCastLidar.cpp](RainyPCSim/carla/Unreal/CarlaUE4/Plugins/Carla/Source/Carla/Sensor/RayCastLidar.cpp), modify the fixed file path base on your own carla path.
 2. Rebuild carla
    ```bash
    make clean
