@@ -21,4 +21,4 @@ loss:
 info_fn:
   reflect: True
   ignore_index: 4
-base_dir: /home/PJLAB/yangdonglin/workplace/lidar-intensity/runs
+base_dir: lidar-intensity/runs

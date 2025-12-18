@@ -69,7 +69,7 @@ ARayCastLidar::ARayCastLidar(const FObjectInitializer &ObjectInitializer)
 }
 float ARayCastLidar::ReadAlphaFromFile(const float perception)
 {
-  std::string filename = "/home/PJLAB/yangdonglin/workplace/carla/0.9.12/carla_LiDARSimLibBackUp/MieCsv/mie_ext.csv"; // modify depend on your own carla path
+  std::string filename = "carla/0.9.12/carla_LiDARSimLibBackUp/MieCsv/mie_ext.csv"; // modify depend on your own carla path
   std::ifstream MieCsv(filename, std::ios::in);
   std::string lineStr;
   float final_alpha = 0.0f;
@@ -393,7 +393,7 @@ ARayCastLidar::FDetection ARayCastLidar::ComputeDetectionAdvance(const FHitResul
 
 void ARayCastLidar::LidarLogging(int pSize)
 {
-  std::string filename = "/home/PJLAB/yangdonglin/workplace/carla/0.9.12/carla_LiDARSimLibBackUp/debug/debug_particle.txt"; // modify depend on your own carla path
+  std::string filename = "carla/0.9.12/carla_LiDARSimLibBackUp/debug/debug_particle.txt"; // modify depend on your own carla path
   std::ofstream Csv(filename, std::ios::out | std::ios::app);
   Csv << pSize << "\n";
   Csv.close();
@@ -401,14 +401,14 @@ void ARayCastLidar::LidarLogging(int pSize)
 
 void ARayCastLidar::LidarLogging(std::string pSize)
 {
-  std::string filename = "/home/PJLAB/yangdonglin/workplace/carla/0.9.12/carla_LiDARSimLibBackUp/debug/debug_particle.txt"; // modify depend on your own carla path
+  std::string filename = "carla/0.9.12/carla_LiDARSimLibBackUp/debug/debug_particle.txt"; // modify depend on your own carla path
   std::ofstream Csv(filename, std::ios::out | std::ios::app);
   Csv << pSize << "\n";
   Csv.close();
 }
 void ARayCastLidar::LidarLogging(char ch)
 {
-  std::string filename = "/home/PJLAB/yangdonglin/workplace/carla/0.9.12/carla_LiDARSimLibBackUp/debug/debug_particle.txt"; // modify depend on your own carla path
+  std::string filename = "carla/0.9.12/carla_LiDARSimLibBackUp/debug/debug_particle.txt"; // modify depend on your own carla path
   std::ofstream Csv(filename, std::ios::out | std::ios::app);
   Csv << ch << "\n";
   Csv.close();
